@@ -1,0 +1,77 @@
+﻿<Page x:Class="StaffEasy.Pages.User.DepartmentsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:StaffEasy.Pages.User"
+      mc:Ignorable="d"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="DepartmentsPage">
+
+    <Page.Resources>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Background" Value="#007ACC"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#005A9E"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}" 
+                                CornerRadius="3">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#005A9E"/>
+                                <Setter Property="BorderBrush" Value="#004275"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#004275"/>
+                                <Setter Property="BorderBrush" Value="#002D4D"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="#f0f0f0" Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Верхняя панель для добавления и редактирования отделов -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,20" Grid.Row="0">
+            <Grid>
+                <TextBox Name="txtDepartmentName" Width="200" Height="30" Margin="0,0,10,0" VerticalAlignment="Center"  TextChanged="txtDepartmentName_TextChanged"/>
+                <TextBlock Text="Название отдела" Foreground="Gray" IsHitTestVisible="False" Margin="5,0,0,0" VerticalAlignment="Center" Visibility="Collapsed" Name="txtDepartmentNamePlaceholder"/>
+            </Grid>
+            <Button Content="Добавить отдел" Click="ButtonAddDepartment_Click" Width="150" Height="30" Style="{StaticResource ButtonStyle}"/>
+            <Button Content="Редактировать отдел" Click="ButtonEditDepartment_Click" Width="150" Height="30" Style="{StaticResource ButtonStyle}"/>
+        </StackPanel>
+
+        <!-- Таблица для отделов -->
+        <DataGrid Name="DGDepartments" FontSize="18" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Background="White" Margin="0" MouseDoubleClick="DGDepartments_MouseDoubleClick">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding DepartmentID}"/>
+                <DataGridTextColumn Header="Название" Binding="{Binding DepartmentName}"/>
+                <DataGridTextColumn Header="Руководитель" Binding="{Binding DepartmentHead}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Нижняя панель для удаления отделов -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="2" Margin="0,20,0,0">
+            <Button Content="Удалить отдел" Click="ButtonDeleteDepartment_Click" Width="150" Height="30" Style="{StaticResource ButtonStyle}"/>
+        </StackPanel>
+    </Grid>
+</Page>

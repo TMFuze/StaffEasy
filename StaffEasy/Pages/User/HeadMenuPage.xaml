@@ -1,0 +1,39 @@
+﻿<Page x:Class="StaffEasy.Pages.User.HeadMenuPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:StaffEasy.Pages.User"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="HeadMenuPage">
+
+    
+
+
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Левая часть с кнопками меню -->
+        <Border CornerRadius="10" Background="#4FC3F7" Margin="10,10,10,10">
+            <Border.Effect>
+                <DropShadowEffect Color="#33000000" Direction="90" ShadowDepth="3" Opacity="0.5"/>
+            </Border.Effect>
+            <StackPanel Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="10">
+                <ToggleButton Foreground="White" Name="ButtonStaff" Click="ButtonStaff_Click" Content="Сотрудники" Style="{StaticResource TabButtonStyle}" Margin="0 0 0 10"/>
+                <ToggleButton Foreground="White" Name="VacanciesButton" Click='VacanciesButton_Click' Content="Вакансии" Style="{StaticResource TabButtonStyle}" Margin="0 0 0 10"/>
+                <ToggleButton Foreground="White" Content="Архив" Name="ArchiveButton" Click="ArchiveButton_Click" Style="{StaticResource TabButtonStyle}" Margin="0 0 0 10"/>
+                <ToggleButton Foreground="White" Name="LogOut" Click="LogOut_Click" Content="Выйти/Авторизация"  Style="{StaticResource TabButtonStyle}" Margin="0 0 0 10"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Правая часть с фреймом -->
+        <Frame Grid.Column="1" x:Name="SecondMainFrame" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="10">
+            <!-- Здесь будет содержимое фрейма -->
+        </Frame>
+    </Grid>
+</Page>
